@@ -1,44 +1,43 @@
 import React from "react";
 import "./index.css";
 export default class TodoListItem extends React.Component {
-  state = { done: undefined };
-  onLabelDoneClick = () => this.setState({ done: true });
-  onLabelUndoneClick = () => this.setState({ done: false });
+  state = {
+    done: false,
+    important: false,
+  };
+  onLabelDoneClick = () => this.setState(({ done }) => { return { done: !done } });
+  onMarkImportant = () => this.setState(({ important }) => { return { important: !important } });
 
   render() {
-    const { label, important = false } = this.props;
-    const style = {
-      color: important ? "steelblue" : "black",
-      fontWeight: important ? "bold" : "normal",
-    };
-
-    const { done } = this.state;
+    const { label } = this.props;
+    const { done, important } = this.state;
 
     let classNames = ["todo-list-item"];
     if (done) {
       classNames.push("done");
     }
+    if (important) {
+      classNames.push("important");
+    }
 
     return (
       <span className={classNames.join(" ")}>
-        <span className="todo-list-item-label" style={style}>
-          {label}
-        </span>
+        <span className="todo-list-item-label">{label}</span>
 
         <button
           type="button"
-          className="btn btn-outline-success btn-sm float-right"
+          className={`btn ${this.state.done ? "btn-outline-success" : "btn-outline-danger"} btn-sm float-right"`}
           onClick={this.onLabelDoneClick}
         >
-          <i className="fa-solid fa-check" />
+          {this.state.done ? <i className="fa-solid fa-plus" /> : <i className="fa-solid fa-times" />}
         </button>
 
         <button
           type="button"
-          className="btn btn-outline-danger btn-sm float-right"
-          onClick={this.onLabelUndoneClick}
+          className="btn btn-outline-warning btn-sm float-right"
+          onClick={this.onMarkImportant}
         >
-          <i className="fa-solid fa-trash" />
+          {this.state.important ? <i className="fa-solid fa-arrow-down" /> : <i className="fa-solid fa-arrow-up" />}
         </button>
       </span>
     );
