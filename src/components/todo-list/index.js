@@ -3,18 +3,19 @@ import React from "react";
 import TodoListItem from "../todo-list-item";
 import "./index.css";
 
-const TodoList = ({ todos }) => {
-  const elements = todos.map((item) => {
-    const { id, ...itemProps } = item;
+export default class TodoList extends React.Component {
+  render() {
+    const { todos } = this.props;
+    const elements = todos.map((item) => {
+      const { id, ...itemProps } = item;
 
-    return (
-      <li key={id} className="list-group-item">
-        <TodoListItem {...itemProps} />
-      </li>
-    );
-  });
+      return (
+        <li key={id} className="list-group-item">
+          <TodoListItem {...itemProps} />
+        </li>
+      );
+    });
 
-  return <ul className="list-group todo-list">{elements}</ul>;
-};
-
-export default TodoList;
+    return <ul className="list-group todo-list">{elements}</ul>;
+  }
+}
