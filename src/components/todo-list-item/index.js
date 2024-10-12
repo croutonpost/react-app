@@ -1,6 +1,9 @@
 import React from "react";
 import "./index.css";
 export default class TodoListItem extends React.Component {
+  onLabelDoneClick = () => console.log(`Done: ${this.props.label}`);
+  onLabelUndoneClick = () => console.log(`Undone: ${this.props.label}`);
+
   render() {
     const { label, important = false } = this.props;
     const style = {
@@ -17,15 +20,17 @@ export default class TodoListItem extends React.Component {
         <button
           type="button"
           className="btn btn-outline-success btn-sm float-right"
+          onClick={this.onLabelDoneClick}
         >
-          <i className="fa fa-exclamation" />
+          <i className="fa-solid fa-check" />
         </button>
 
         <button
           type="button"
           className="btn btn-outline-danger btn-sm float-right"
+          onClick={this.onLabelUndoneClick}
         >
-          <i className="fa fa-trash-o" />
+          <i className="fa-solid fa-trash" />
         </button>
       </span>
     );
