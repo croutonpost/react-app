@@ -1,9 +1,9 @@
 import React from "react";
 
-import Header from "./components/header";
-import Search from "./components/search";
-import TodoList from "./components/todo-list";
-import ItemStatusFilter from "./components/item-status-filter";
+import Header from "../header";
+import Search from "../search";
+import TodoList from "../todo-list";
+import ItemStatusFilter from "../item-status-filter";
 
 import "./index.css";
 
