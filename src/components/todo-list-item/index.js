@@ -1,8 +1,9 @@
 import React from "react";
 import "./index.css";
 export default class TodoListItem extends React.Component {
-  onLabelDoneClick = () => console.log(`Done: ${this.props.label}`);
-  onLabelUndoneClick = () => console.log(`Undone: ${this.props.label}`);
+  state = { done: undefined };
+  onLabelDoneClick = () => this.setState({ done: true });
+  onLabelUndoneClick = () => this.setState({ done: false });
 
   render() {
     const { label, important = false } = this.props;
@@ -11,8 +12,15 @@ export default class TodoListItem extends React.Component {
       fontWeight: important ? "bold" : "normal",
     };
 
+    const { done } = this.state;
+
+    let classNames = ["todo-list-item"];
+    if (done) {
+      classNames.push("done");
+    }
+
     return (
-      <span className="todo-list-item">
+      <span className={classNames.join(" ")}>
         <span className="todo-list-item-label" style={style}>
           {label}
         </span>
