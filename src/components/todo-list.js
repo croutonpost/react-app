@@ -5,10 +5,16 @@ const TodoList = () => {
   return (
     <ul>
       <li>
-        <TodoListItem />
+        <TodoListItem label="Drink Coffee" />
       </li>
       <li>
-        <TodoListItem />
+        <TodoListItem label="Implement React Application" />
+      </li>
+      <li>
+        <TodoListItem label="Make notes from your study" />
+      </li>
+      <li>
+        <TodoListItem label="Do not drink alchohol" important />
       </li>
     </ul>
   );
