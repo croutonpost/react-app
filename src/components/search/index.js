@@ -16,8 +16,8 @@ export default class SearchPanel extends React.Component {
     return (
       <input
         type="text"
-        className={"form-control search-input"}
-        placeholder={"type to search"}
+        className="form-control search-input"
+        placeholder="Search..."
         value={this.state.term}
         onChange={this.onSearchChange}
       />
